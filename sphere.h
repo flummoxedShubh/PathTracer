@@ -28,14 +28,18 @@ bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) cons
         if (temp < t_max && temp > t_min) {
             rec.t = temp;
             rec.p = r.at(rec.t);
-            rec.normal = (rec.p - center) / radius;
+            //Normalize (vector from center of circle to point of intersection) with it's magnitude ie Radius.
+            vec3 outward_normal = (rec.p - center) / radius; 
+            rec.set_face_normal(r, outward_normal);
             return true;
         }
         temp = (-half_b + root) / a;
         if (temp < t_max && temp > t_min) {
             rec.t = temp;
             rec.p = r.at(rec.t);
-            rec.normal = (rec.p - center) / radius;
+            //Normalize (vector from center of circle to point of intersection) with it's magnitude ie Radius.
+            vec3 outward_normal = (rec.p - center) / radius; 
+            rec.set_face_normal(r, outward_normal);
             return true;
         }
     }
