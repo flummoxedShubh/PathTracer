@@ -13,8 +13,8 @@ color ray_color(const ray&r, const hittable& world, int depth) {
     if (depth <= 0)
         return color(0,0,0);
     
-    if(world.hit(r, 0, infinity, rec)){ //if ray hits
-        point3 target = rec.p + rec.normal + vec3::random_in_unit_sphere();
+    if(world.hit(r, 0, infinity, rec)){ //if ray hits (tmin = 0.001 not working, overflows the stack)
+        point3 target = rec.p + rec.normal + random_unit_vector();
         return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth);
     }
     vec3 unit_direction = unit_vector(r.direction()); //if ray doesn't hit
