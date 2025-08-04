@@ -81,12 +81,6 @@ The output image (`Render.ppm`) will be saved and opened automatically.
 
 ---
 
-## 📌 License
-
-This project is educational and built on public-domain resources. If you plan to distribute or reuse this, consider adding an appropriate open-source license.
-
----
-
 ## 📄 License (MIT)
 
 ```
